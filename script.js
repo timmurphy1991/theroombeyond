@@ -236,48 +236,6 @@ if (details) {
 
 
 
-/* MOBILE HIGHLIGHTS */
-const highlights = [...document.querySelectorAll(".highlight")];
-
-if (highlights.length) {
-  const mobileHighlights = window.matchMedia("(max-width: 600px)");
-
-  highlights.forEach(item => {
-    const button = item.querySelector(".highlight-label");
-    if (!button) return;
-
-    button.disabled = !mobileHighlights.matches;
-
-    button.addEventListener("click", () => {
-      if (!mobileHighlights.matches) return;
-
-      const willOpen = !item.classList.contains("is-open");
-
-      highlights.forEach(other => {
-        other.classList.remove("is-open");
-        other.querySelector(".highlight-label")?.setAttribute("aria-expanded", "false");
-      });
-
-      if (willOpen) {
-        item.classList.add("is-open");
-        button.setAttribute("aria-expanded", "true");
-      }
-    });
-  });
-
-  const resetHighlights = () => {
-    highlights.forEach(item => {
-      item.classList.remove("is-open");
-      const button = item.querySelector(".highlight-label");
-      button?.setAttribute("aria-expanded", "false");
-      if (button) button.disabled = !mobileHighlights.matches;
-    });
-  };
-
-  mobileHighlights.addEventListener("change", resetHighlights);
-}
-
-
 /* FAQ ACCORDION */
 document.querySelectorAll(".faq-item").forEach(item => {
   const summary = item.querySelector("summary");
