@@ -1,434 +1,387 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>the room beyond.</title>
-<meta name="description" content="Architect-designed garden rooms, fully finished and installed across the UK. Usually no planning permission needed.">
-<link rel="stylesheet" href="style.css">
-</head>
-
-<script>
-if ("scrollRestoration" in history) {
-history.scrollRestoration = "manual";
-}
-</script>
-
-<body>
-
-<!---NAVIGATION--->
-
-<header class="intro-header">
-<a href="/" class="intro-logo">the room beyond<span class="dot">.</span></a>
-<nav class="intro-nav" id="intro-navigation" aria-label="Main navigation">
-<a href="#studios">Studios</a>
-<a href="#details">Specification</a>
-<a href="/planning">Check your garden</a>
-<a href="/configurator">Design your studio</a>
-</nav>
-
-<button class="intro-menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="intro-navigation">
-<span class="intro-menu-icon" aria-hidden="true"></span>
-</button>
-</header>
-
-<main>
-
-<!---INTRODUCTION--->
-
-<section id="introduction" class="depth">
-<div class="intro-visual">
-<div class="intro-images" aria-hidden="true">
-<div class="photo-stack intro-image"><img class="bg" src="images/home/macro/01.webp" alt=""><img class="vegetation" src="images/vegetation.png"><div class="shade"></div></div>
-<div class="photo-stack intro-image active"><img class="bg" src="images/home/macro/02.webp" alt=""><img class="vegetation" src="images/vegetation.png"><div class="shade"></div></div>
-<div class="photo-stack intro-image"><img class="bg" src="images/home/macro/03.webp" alt=""><img class="vegetation" src="images/vegetation.png"><div class="shade"></div></div>
-</div>
-
-<div class="intro-content">
-<p class="intro-eyebrow">Garden Rooms / Made Properly</p>
-<h1 class="intro-title">the room your house is missing<span class="dot">.</span></h1>
-<p class="intro-copy">Architect-designed garden rooms, fully finished and installed, from <span data-price="60"></span>.</p>
-
-<div class="intro-studios">
-
-<p class="intro-studios-label">Studio</p>
-
-<div class="intro-studio-links">
-<a href="#studio-60" data-studio="60">60</a>
-<a href="#studio-90" data-studio="90" class="active" aria-current="true">90</a>
-<a href="#studio-120" data-studio="120">120</a>
-</div>
-<div class="intro-progress" aria-hidden="true"><span></span></div>
-</div>
-</div>
-
-  <p class="intro-detail" data-finish="Narrow Charred"></p>
-</div>
-
-<!-- HIGHLIGHTS -->
-<section class="highlights" aria-label="Studio highlights">
-  <div class="highlight">
-    <h3 class="highlight-label">Usually no planning</h3>
-    <p>Designed for permitted development. We check your plot with you before anything is ordered.</p>
-  </div>
-  <div class="highlight">
-    <h3 class="highlight-label">Made properly</h3>
-    <p>Built in our own workshop. Our joiners and glaziers are all in-house.</p>
-  </div>
-  <div class="highlight">
-    <h3 class="highlight-label">Year round use</h3>
-    <p>Warm in January, cool in July. Dual-layer insulation and our shading system.</p>
-  </div>
-  <div class="highlight">
-    <h3 class="highlight-label">Designed to last</h3>
-    <p>Thermowood and birch ply, with a 10-year structural warranty included.</p>
-  </div>
-</section>
-</section>
-
-<!-- STUDIOS -->
-<section id="studios">
-  <header class="studios-head">
-    <p class="label">01 / Studios</p>
-    <h2 class="section-title">three sizes, one idea<span class="dot">.</span></h2>
-<p class="section-description">Identical construction, materials and detailing throughout. Choose the size that suits you.</p>
-  </header>
-
-  <div class="studio-grid">
-    <article class="studio studio--60" id="studio-60">
-      <div class="drawing">
-        <svg class="elevation" viewBox="0 0 5100 2475" aria-hidden="true">
-          <path class="outer-frame" d="M1050 0 H4050 V2400 H4000 V2475 H1100 V2400 H1050 Z"/>
-          <path class="inner-frame" d="M1100 2400 H1200 V225 H3900 V2400 H4000"/>
-          <rect class="glazing" x="1200" y="225" width="1800" height="2100"/>
-          <path class="ground" d="M0 2475 H5100"/>
-          <path class="mullion" d="M2100 225 V2325"/>
-          <path class="line-2" d="M1950 1350 H2250"/>
-          <path class="line-3" d="M1200 2325 H3900"/>
-        </svg>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>the room beyond.</title>
+    <meta name="description" content="Architect-designed garden rooms, made in-house and fully installed across the UK. Three considered sizes, from £15,000.">
+    <meta name="theme-color" content="#f4f0e7">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header class="intro-header">
+      <a href="/" class="intro-logo">the room beyond<span class="dot">.</span></a>
+      <nav class="intro-nav" id="intro-navigation" aria-label="Main navigation">
+        <a href="#studios">Studios</a>
+        <a href="#details">Specification</a>
+        <a href="/planning">Check your garden</a>
+        <a href="/configurator">Design your studio</a>
+      </nav>
+      <button class="intro-menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="intro-navigation">
+        <span class="intro-menu-icon" aria-hidden="true"></span>
+      </button>
+    </header>
+    <main>
+      <!-- Introduction -->
+      <section id="introduction" class="depth">
+        <div class="intro-visual">
+          <div class="intro-images" aria-hidden="true">
+            <div class="photo-stack intro-image">
+              <picture class="responsive-photo"><source media="(max-width: 600px)" srcset="images/home/micro/01.webp"><img class="bg" src="images/home/macro/01.webp" alt=""></picture>
+              <img class="vegetation" src="images/vegetation.png" alt="" aria-hidden="true">
+              <div class="shade" aria-hidden="true"></div>
+            </div>
+            <div class="photo-stack intro-image active">
+              <picture class="responsive-photo"><source media="(max-width: 600px)" srcset="images/home/micro/02.webp"><img class="bg" src="images/home/macro/02.webp" alt=""></picture>
+              <img class="vegetation" src="images/vegetation.png" alt="" aria-hidden="true">
+              <div class="shade" aria-hidden="true"></div>
+            </div>
+            <div class="photo-stack intro-image">
+              <picture class="responsive-photo"><source media="(max-width: 600px)" srcset="images/home/micro/03.webp"><img class="bg" src="images/home/macro/03.webp" alt=""></picture>
+              <img class="vegetation" src="images/vegetation.png" alt="" aria-hidden="true">
+              <div class="shade" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="intro-content">
+            <p class="intro-eyebrow">Garden Rooms / Made Properly</p>
+            <h1 class="intro-title">the room your house is missing<span class="dot">.</span></h1>
+            <p class="intro-copy">Architect-designed garden rooms, made in-house and fully installed across the UK. From <span data-price="60"></span>.</p>
+            <div class="intro-studios">
+              <p class="intro-studios-label">Studio</p>
+              <div class="intro-studio-links">
+                <a href="#studio-60" data-studio="60">60</a>
+                <a href="#studio-90" data-studio="90" class="active" aria-current="true">90</a>
+                <a href="#studio-120" data-studio="120">120</a>
+              </div>
+              <div class="intro-progress" aria-hidden="true">
+                <span></span>
+              </div>
+            </div>
+          </div>
+          <p class="intro-detail" data-finish="Narrow Charred"></p>
+        </div>
+        <!-- Highlights -->
+        <section class="highlights" aria-label="Studio highlights">
+          <div class="highlight">
+            <h3 class="highlight-label">Planning, considered</h3>
+            <p>Designed around permitted development limits. We check your property and plot before you commit.</p>
+          </div>
+          <div class="highlight">
+            <h3 class="highlight-label">Made in-house</h3>
+            <p>Designed, built and installed by our own team, with joinery and specialist glazing under one roof.</p>
+          </div>
+          <div class="highlight">
+            <h3 class="highlight-label">Comfort, all year</h3>
+            <p>Insulated walls, roof and floor, high-performance glazing and integrated heating.</p>
+          </div>
+          <div class="highlight">
+            <h3 class="highlight-label">Materials with purpose</h3>
+            <p>Thermowood outside, natural birch plywood within, and a 10-year structural warranty.</p>
+          </div>
+        </section>
+      </section>
+      <!-- Studios -->
+      <section id="studios">
+        <header class="studios-head">
+          <p class="label">01 / Studios</p>
+          <h2 class="section-title fade-in">three sizes, one idea<span class="dot">.</span></h2>
+          <p class="section-description">Identical construction, materials and detailing throughout. Choose the size that suits you.</p>
+        </header>
+        <div class="studio-grid">
+          <article class="studio studio--60" id="studio-60">
+            <div class="drawing">
+              <svg class="elevation" viewBox="0 0 5100 2475" aria-hidden="true">
+                <path class="outer-frame" d="M1050 0 H4050 V2400 H4000 V2475 H1100 V2400 H1050 Z"></path>
+                <path class="inner-frame" d="M1100 2400 H1200 V225 H3900 V2400 H4000"></path>
+                <rect class="glazing" x="1200" y="225" width="1800" height="2100"></rect>
+                <path class="ground" d="M0 2475 H5100"></path>
+                <path class="mullion" d="M2100 225 V2325"></path>
+                <path class="line-2" d="M1950 1350 H2250"></path>
+                <path class="line-3" d="M1200 2325 H3900"></path>
+              </svg>
+            </div>
+            <div class="dimensions">
+              <span>3.0 × 2.85 m external</span>
+              <span>58 sq ft internal</span>
+            </div>
+            <div class="studio-title">
+              <h3>studio<span class="dot">.</span> 60</h3>
+              <p class="price">from <span data-price="60"></span></p>
+            </div>
+            <p class="description">A compact, considered space for focused work or a little breathing room.</p>
+            <div class="studio-links">
+              <a class="button primary" href="/configurator?size=60">Design yours →</a>
+              <a class="text-link studio-explore-link" href="#details" data-size="60">Explore</a>
+            </div>
+          </article>
+          <article class="studio studio--90" id="studio-90">
+            <div class="drawing">
+              <svg class="elevation" viewBox="0 0 5100 2475" aria-hidden="true">
+                <path class="outer-frame" d="M600 0 H4500 V2400 H4450 V2475 H650 V2400 H600 Z"></path>
+                <path class="inner-frame" d="M650 2400 H750 V225 H4350 V2400 H4450"></path>
+                <rect class="glazing" x="750" y="225" width="2400" height="2100"></rect>
+                <path class="ground" d="M0 2475 H5100"></path>
+                <path class="mullion" d="M1950 225 V2325"></path>
+                <path class="line-2" d="M3000 1350 H3150"></path>
+                <path class="line-3" d="M750 2325 H4350"></path>
+              </svg>
+            </div>
+            <div class="dimensions">
+              <span>3.9 × 3.15 m external</span>
+              <span>89 sq ft internal</span>
+            </div>
+            <div class="studio-title">
+              <h3>studio<span class="dot">.</span> 90</h3>
+              <p class="price">from <span data-price="90"></span></p>
+            </div>
+            <p class="description">Room to work, create and step away from the everyday.</p>
+            <div class="studio-links">
+              <a class="button primary" href="/configurator?size=90">Design yours →</a>
+              <a class="text-link studio-explore-link" href="#details" data-size="90">Explore</a>
+            </div>
+          </article>
+          <article class="studio studio--120" id="studio-120">
+            <div class="drawing">
+              <svg class="elevation" viewBox="0 0 5100 2475" aria-hidden="true">
+                <path class="outer-frame" d="M0 0 H5100 V2400 H5050 V2475 H50 V2400 H0 Z"></path>
+                <path class="inner-frame" d="M50 2400 H150 V225 H3750 V2400 H5050"></path>
+                <rect class="glazing" x="1350" y="225" width="2400" height="2100"></rect>
+                <path class="ground" d="M0 2475 H5100"></path>
+                <path class="mullion" d="M2550 225 V2325"></path>
+                <path class="line-2" d="M1350 1350 H1500"></path>
+                <path class="line-3" d="M150 2325 H3750"></path>
+              </svg>
+            </div>
+            <div class="dimensions">
+              <span>5.1 × 3.15 m external</span>
+              <span>119 sq ft internal</span>
+            </div>
+            <div class="studio-title">
+              <h3>studio<span class="dot">.</span> 120</h3>
+              <p class="price">from <span data-price="120"></span></p>
+            </div>
+            <p class="description">Space to spread out, with room for work and everything around it.</p>
+            <div class="studio-links">
+              <a class="button primary" href="/configurator?size=120">Design yours →</a>
+              <a class="text-link studio-explore-link" href="#details" data-size="120">Explore</a>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- Details -->
+      <section id="details" class="depth">
+        <div class="details-image photo-stack">
+          <img class="bg" id="details-image" src="images/home/macro/06.webp" alt="Studio 120" loading="lazy">
+          <img class="bg details-image-next" id="details-image-next" src="images/home/macro/06.webp" alt="" aria-hidden="true">
+          <img class="vegetation" id="details-vegetation" src="images/vegetation.png" alt="" aria-hidden="true" loading="lazy">
+          <div class="shade" aria-hidden="true"></div>
+          <p class="photo-label">02 / Details</p>
+          <p class="photo-caption">Wide Ash</p>
+          <div class="details-hotspots" aria-label="Studio details">
+            <div class="hotspot-set" data-studio="60" hidden>
+              <button class="hotspot" data-hotspot="cladding" style="left:33%;top:50%" aria-label="Cladding" aria-expanded="false">
+                <span class="hotspot-note">Thermowood cladding, machined for a clean, consistent finish.</span>
+              </button>
+              <button class="hotspot" data-hotspot="door" style="left:60%;top:50%" aria-label="Door" aria-expanded="false">
+                <span class="hotspot-note">Door.</span>
+              </button>
+              <button class="hotspot" data-hotspot="interior" style="left:50%;top:33%" aria-label="Interior" aria-expanded="false">
+                <span class="hotspot-note">Interior.</span>
+              </button>
+              <button class="hotspot" data-hotspot="structure" style="left:60%;top:18%" aria-label="Structure" aria-expanded="false">
+                <span class="hotspot-note">Structure.</span>
+              </button>
+              <button class="hotspot" data-hotspot="window" style="left:25%;top:33%" aria-label="Window" aria-expanded="false">
+                <span class="hotspot-note">Window.</span>
+              </button>
+            </div>
+            <div class="hotspot-set" data-studio="90" hidden>
+              <button class="hotspot" data-hotspot="cladding" style="left:22%;top:30%" aria-label="Cladding" aria-expanded="false">
+                <span class="hotspot-note">Thermowood cladding, available in narrow or wide boards.</span>
+              </button>
+              <button class="hotspot" data-hotspot="glazing" style="left:60%;top:42%" aria-label="Glazing" aria-expanded="false">
+                <span class="hotspot-note">High-performance glazing, made and fitted by our own team.</span>
+              </button>
+              <button class="hotspot" data-hotspot="interior" style="left:72%;top:58%" aria-label="Interior" aria-expanded="false">
+                <span class="hotspot-note">Natural birch plywood for a warm, understated interior.</span>
+              </button>
+              <button class="hotspot" data-hotspot="structure" style="left:38%;top:78%" aria-label="Structure" aria-expanded="false">
+                <span class="hotspot-note">Insulated walls, roof and floor for comfortable year-round use.</span>
+              </button>
+            </div>
+            <div class="hotspot-set" data-studio="120">
+              <button class="hotspot" data-hotspot="cladding" style="left:10%;top:34%" aria-label="Cladding" aria-expanded="false">
+                <span class="hotspot-note">Thermowood cladding, machined for a clean, consistent finish.</span>
+              </button>
+              <button class="hotspot" data-hotspot="glazing" style="left:58%;top:48%" aria-label="Glazing" aria-expanded="false">
+                <span class="hotspot-note">High-performance glazing, made and fitted by our own team.</span>
+              </button>
+              <button class="hotspot" data-hotspot="interior" style="left:76%;top:42%" aria-label="Interior" aria-expanded="false">
+                <span class="hotspot-note">Natural birch plywood, left clean and unadorned.</span>
+              </button>
+              <button class="hotspot" data-hotspot="structure" style="left:76%;top:72%" aria-label="Structure" aria-expanded="false">
+                <span class="hotspot-note">An insulated structure designed for year-round use.</span>
+              </button>
+              <button class="hotspot" data-hotspot="comfort" style="left:40%;top:62%" aria-label="Comfort" aria-expanded="false">
+                <span class="hotspot-note">Integrated lighting, double sockets and heating and cooling.</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="details-info">
+          <h2>studio<span class="dot">.</span></h2>
+          <p class="details-price">From <span id="details-price"></span></p>
+          <div class="details-buttons">
+            <button type="button" data-studio="60" aria-pressed="false">60</button>
+            <button type="button" data-studio="90" aria-pressed="false">90</button>
+            <button type="button" data-studio="120" class="active" aria-pressed="true">120</button>
+          </div>
+          <div class="details-specs">
+            <div class="details-spec">
+              <h3>01 / Size</h3>
+              <p id="details-size"></p>
+            </div>
+            <div class="details-spec">
+              <h3>02 / Structure</h3>
+              <p>Insulated walls, roof and floor, with integrated shading for year-round comfort.</p>
+            </div>
+            <div class="details-spec">
+              <h3>03 / Exterior</h3>
+              <p>Ash or charred Thermowood, available in narrow or wide board profiles.</p>
+            </div>
+            <div class="details-spec">
+              <h3>04 / Interior</h3>
+              <p>Natural birch plywood to walls and ceiling, with a considered choice of flooring.</p>
+            </div>
+            <div class="details-spec">
+              <h3>05 / Glazing</h3>
+              <p>Argon-filled, high-performance glazing with integrated UV protection.</p>
+            </div>
+            <div class="details-spec">
+              <h3>06 / Comfort</h3>
+              <p>Interior and exterior lighting, double sockets and Wi-Fi controlled heating.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Process -->
+      <section id="process">
+        <p class="label">03 / PROCESS</p>
+        <h2 class="section-title fade-in">a straightforward way to make more space<span class="dot">.</span></h2>
+        <p class="section-description">From the first garden check to the finished room.</p>
+        <ol class="process-steps">
+          <li>
+            <span class="step-number">01</span>
+            <h3>Find your fit</h3>
+            <p>Explore what's possible in your garden.</p>
+            <a href="/planning">Check your garden →</a>
+          </li>
+          <li>
+            <span class="step-number">02</span>
+            <h3>Make it yours</h3>
+            <p>Choose your preferred size and finish.</p>
+            <a href="/configurator">Design your studio →</a>
+          </li>
+          <li>
+            <span class="step-number">03</span>
+            <h3>Made properly</h3>
+            <p>Carefully crafted and finished in our workshop.</p>
+          </li>
+          <li>
+            <span class="step-number">04</span>
+            <h3>Installed by us</h3>
+            <p>Delivered and carefully assembled in your garden.</p>
+          </li>
+          <li>
+            <span class="step-number">05</span>
+            <h3>Ready to use</h3>
+            <p>A considered space, ready to make your own.</p>
+          </li>
+        </ol>
+      </section>
+      <!-- Gallery -->
+      <section id="gallery" class="depth photo-stack">
+        <picture class="responsive-photo"><source media="(max-width: 600px)" srcset="images/home/micro/07.webp"><img class="bg" src="images/home/macro/07.webp" alt="Garden room exterior" loading="lazy"></picture>
+        <img class="vegetation" src="images/vegetation.png" aria-hidden="true" loading="lazy">
+        <div class="shade" aria-hidden="true"></div>
+        <p class="photo-caption">Studio 60 / Wide Ash</p>
+      </section>
+      <!-- About -->
+      <section class="split" id="about">
+        <div class="split-head">
+          <p class="label">04 / About</p>
+          <h2 class="split-title fade-in">architects and makers<span class="dot">.</span></h2>
+        </div>
+        <div class="split-body">
+          <p>An architectural design studio working alongside a specialist residential glazing company.</p>
+          <p>Together, we design each studio, build it in our own workshop and install it with our own team. One considered process, from first drawing to final detail.</p>
+          <a class="text-link" href="/contact">Talk to us →</a>
+        </div>
+      </section>
+      <!-- FAQ -->
+      <section class="split" id="faq">
+        <div class="split-head">
+          <p class="label">05 / FAQ</p>
+          <h2 class="split-title fade-in">good questions<span class="dot">.</span></h2>
+        </div>
+        <div class="split-body">
+          <details class="faq-item">
+            <summary>Will I need planning permission?</summary>
+            <div class="faq-answer"><p>Often, but it depends on your property, its location and the position and size of the studio. We design around permitted development limits and check your circumstances with you before anything is ordered. Some sites will need planning permission.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Do you build near me?</summary>
+            <div class="faq-answer"><p>Yes. We deliver and install across the UK, with the site and access checked as part of the planning process.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is it comfortable in winter?</summary>
+            <div class="faq-answer"><p>Yes. Insulated walls, roof and floor work alongside high-performance glazing and integrated heating to make the studio comfortable throughout the year.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What will it cost?</summary>
+            <div class="faq-answer"><p>Studios start at £15,000, with the final price depending on size and finish. Choose your options in the configurator and see the price update as you go.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>How long until it's finished?</summary>
+            <div class="faq-answer"><p>Timing depends on your site, groundwork and specification. We confirm the programme with you before work begins.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>What's the first step?</summary>
+            <div class="faq-answer"><p>Start with the configurator or tell us about your garden. We'll talk through the options, check what is possible and explain the next steps.</p></div>
+          </details>
+        </div>
+      </section>
+      <!-- Call to action -->
+      <section id="cta">
+        <p class="label">06 / Next steps</p>
+        <div class="cta-content">
+          <h2 class="fade-in">more room,<br>for life.</h2>
+          <p>A considered space for work, creativity or time to yourself. Let’s find the right size and finish for your garden.</p>
+          <div class="cta-links">
+            <a href="/planning">Check your garden <span>→</span></a>
+            <a href="/configurator">Design your studio <span>→</span></a>
+            <a href="/contact">Talk to us <span>→</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="footer-logo">
+        <a href="#introduction">the room beyond<span class="dot">.</span></a>
+        <p>© 2026</p>
       </div>
-<div class="dimensions"><span>3.0 × 2.85 m external</span><span>58 sq ft internal</span></div>
-      <div class="studio-title"><h3>studio<span class="dot">.</span> 60</h3><p class="price">from <span data-price="60"></span></p></div>
-      <p class="description">Compact by design. A quiet space for work, focus or escape.</p>
-      <div class="studio-links"><a class="button primary" href="/configurator?size=60">Design yours →</a><a class="text-link studio-explore-link" href="#details" data-size="60">Explore</a></div>
-    </article>
-
-    <article class="studio studio--90" id="studio-90">
-      <div class="drawing">
-        <svg class="elevation" viewBox="0 0 5100 2475" aria-hidden="true">
-          <path class="outer-frame" d="M600 0 H4500 V2400 H4450 V2475 H650 V2400 H600 Z"/>
-          <path class="inner-frame" d="M650 2400 H750 V225 H4350 V2400 H4450"/>
-          <rect class="glazing" x="750" y="225" width="2400" height="2100"/>
-          <path class="ground" d="M0 2475 H5100"/>
-          <path class="mullion" d="M1950 225 V2325"/>
-          <path class="line-2" d="M3000 1350 H3150"/>
-          <path class="line-3" d="M750 2325 H4350"/>
-        </svg>
-      </div>
-<div class="dimensions"><span>3.9 × 3.15 m external</span><span>89 sq ft internal</span></div>
-      <div class="studio-title"><h3>studio<span class="dot">.</span> 90</h3><p class="price">from <span data-price="90"></span></p></div>
-      <p class="description">The balanced middle ground. More room to work, create and live.</p>
-      <div class="studio-links"><a class="button primary" href="/configurator?size=90">Design yours →</a><a class="text-link studio-explore-link" href="#details" data-size="90">Explore</a></div>
-    </article>
-
-    <article class="studio studio--120" id="studio-120">
-      <div class="drawing">
-        <svg class="elevation" viewBox="0 0 5100 2475" aria-hidden="true">
-          <path class="outer-frame" d="M0 0 H5100 V2400 H5050 V2475 H50 V2400 H0 Z"/>
-          <path class="inner-frame" d="M50 2400 H150 V225 H3750 V2400 H5050"/>
-          <rect class="glazing" x="1350" y="225" width="2400" height="2100"/>
-          <path class="ground" d="M0 2475 H5100"/>
-          <path class="mullion" d="M2550 225 V2325"/>
-          <path class="line-2" d="M1350 1350 H1500"/>
-          <path class="line-3" d="M150 2325 H3750"/>
-        </svg>
-      </div>
-<div class="dimensions"><span>5.1 × 3.15 m external</span><span>119 sq ft internal</span></div>
-      <div class="studio-title"><h3>studio<span class="dot">.</span> 120</h3><p class="price">from <span data-price="120"></span></p></div>
-      <p class="description">Our largest studio. Generous space without losing the simplicity.</p>
-      <div class="studio-links"><a class="button primary" href="/configurator?size=120">Design yours →</a><a class="text-link studio-explore-link" href="#details" data-size="120">Explore</a></div>
-    </article>
-  </div>
-</section>
-
-<!---DETAILS--->
-
-
-<section id="details" class="depth">
-  <div class="details-image photo-stack">
-    <img class="bg" id="details-image" src="images/home/macro/06.webp" alt="Studio 120" loading="lazy">
-    <img class="vegetation" id="details-vegetation" src="images/vegetation.png" alt="" aria-hidden="true" loading="lazy">
-    <div class="shade" aria-hidden="true"></div>
-    <p class="photo-label">02 / Details</p>
-    <p class="photo-caption">Wide Ash</p>
-
-    <div class="details-hotspots" aria-label="Studio details">
-
-      <div class="hotspot-set" data-studio="60" hidden>
-
-<button class="hotspot" data-hotspot="cladding" style="left:33%;top:50%" aria-label="Cladding" aria-expanded="false">
-<span class="hotspot-note">Thermowood cladding, machined for a clean, consistent finish.</span>
-</button>
-
-<button class="hotspot" data-hotspot="door" style="left:60%;top:50%" aria-label="Door" aria-expanded="false">
-<span class="hotspot-note">Door.</span>
-</button>
-
-<button class="hotspot" data-hotspot="interior" style="left:50%;top:33%" aria-label="Interior" aria-expanded="false">
-<span class="hotspot-note">Interior.</span>
-</button>
-
-<button class="hotspot" data-hotspot="structure" style="left:60%;top:18%" aria-label="Structure" aria-expanded="false">
-<span class="hotspot-note">Structure.</span>
-</button>
-
-<button class="hotspot" data-hotspot="window" style="left:25%;top:33%" aria-label="Window" aria-expanded="false">
-<span class="hotspot-note">Window.</span>
-</button>
-
-      </div>
-
-      <div class="hotspot-set" data-studio="90" hidden>
-        <button class="hotspot" data-hotspot="cladding" style="left:22%;top:30%" aria-label="Cladding" aria-expanded="false">
-          <span class="hotspot-note">Thermowood cladding, available in narrow or wide boards.</span>
-        </button>
-        <button class="hotspot" data-hotspot="glazing" style="left:60%;top:42%" aria-label="Glazing" aria-expanded="false">
-          <span class="hotspot-note">High-performance glazing, made and fitted by our own team.</span>
-        </button>
-        <button class="hotspot" data-hotspot="interior" style="left:72%;top:58%" aria-label="Interior" aria-expanded="false">
-          <span class="hotspot-note">Natural birch plywood for a warm, understated interior.</span>
-        </button>
-        <button class="hotspot" data-hotspot="structure" style="left:38%;top:78%" aria-label="Structure" aria-expanded="false">
-          <span class="hotspot-note">Insulated walls, roof and floor for comfortable year-round use.</span>
-        </button>
-      </div>
-
-      <div class="hotspot-set" data-studio="120">
-        <button class="hotspot" data-hotspot="cladding" style="left:10%;top:34%" aria-label="Cladding" aria-expanded="false">
-          <span class="hotspot-note">Thermowood cladding, machined for a clean, consistent finish.</span>
-        </button>
-        <button class="hotspot" data-hotspot="glazing" style="left:58%;top:48%" aria-label="Glazing" aria-expanded="false">
-          <span class="hotspot-note">High-performance glazing, made and fitted by our own team.</span>
-        </button>
-        <button class="hotspot" data-hotspot="interior" style="left:76%;top:42%" aria-label="Interior" aria-expanded="false">
-          <span class="hotspot-note">Natural birch plywood, left clean and unadorned.</span>
-        </button>
-        <button class="hotspot" data-hotspot="structure" style="left:76%;top:72%" aria-label="Structure" aria-expanded="false">
-          <span class="hotspot-note">An insulated structure designed for year-round use.</span>
-        </button>
-        <button class="hotspot" data-hotspot="comfort" style="left:40%;top:62%" aria-label="Comfort" aria-expanded="false">
-          <span class="hotspot-note">Integrated lighting, double sockets and heating and cooling.</span>
-        </button>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="details-info">
-    <h2>studio<span class="dot">.</span></h2>
-    <p class="details-price">From <span id="details-price"></span></p>
-
-    <div class="details-buttons">
-      <button type="button" data-studio="60">60</button>
-      <button type="button" data-studio="90">90</button>
-      <button type="button" data-studio="120" class="active">120</button>
-    </div>
-
-<div class="details-specs">
-
-<div class="details-spec">
-<h3>01 / Size</h3>
-<p id="details-size"></p>
-</div>
-
-<div class="details-spec">
-<h3>02 / Structure</h3>
-<p>Dual-layer insulation and integrated shading, engineered for year-round comfort.</p>
-</div>
-
-<div class="details-spec">
-<h3>03 / Exterior</h3>
-<p>Ash or charred Thermowood cladding, with a choice of narrow or wide board profiles.</p>
-</div>
-
-<div class="details-spec">
-<h3>04 / Interior</h3>
-<p>Natural birch plywood to walls and ceiling, with a considered choice of flooring.</p>
-</div>
-
-<div class="details-spec">
-<h3>05 / Glazing</h3>
-<p>High-performance, argon-filled glazing, complete with integrated UV protection.</p>
-</div>
-
-<div class="details-spec">
-<h3>06 / Comfort</h3>
-<p>Integrated lighting inside and out, double sockets and Wi-Fi controlled heating.</p>
-</div>
-
-</div>
-
-</div>
-</section>
-
-<!---PROCESS--->
-
-<section id="process">
-
-<p class="label">03 / PROCESS</p>
-<h2 class="section-title">from garden to room<span class="dot">.</span></h2>
-<p class="section-description">Five steps. One finished studio.</p>
-
-<ol class="process-steps">
-
-<li>
-<span class="step-number">01</span>
-<h3>Find your fit</h3>
-<p>Find out what's possible.</p>
-<a href="/planning">Check your garden →</a>
-</li>
-
-<li>
-<span class="step-number">02</span>
-<h3>Make it yours</h3>
-<p>Choose your size and finish.</p>
-<a href="/configurator">Design your studio →</a>
-</li>
-
-<li>
-<span class="step-number">03</span>
-<h3>Made properly</h3>
-<p>Built and finished in our workshop.</p>
-</li>
-
-<li>
-<span class="step-number">04</span>
-<h3>Installed by us</h3>
-<p>Assembled in your garden.</p>
-</li>
-
-<li>
-<span class="step-number">05</span>
-<h3>Ready to use</h3>
-<p>Your space, complete.</p>
-</li>
-
-</ol>
-</section>
-
-<!---GALLERY--->
-
-<section id="gallery" class="depth photo-stack">
-
-<img class="bg" src="images/home/macro/07.webp" alt="Studio 60 in wide ash" loading="lazy">
-<img class="vegetation" src="images/vegetation.png" alt="" aria-hidden="true" loading="lazy">
-<div class="shade" aria-hidden="true"></div>
-<p class="photo-caption">Studio 60 / Wide Ash</p>
-
-</section>
-
-<!---ABOUT--->
-
-<section class="split" id="about">
-
-<div class="split-head">
-<p class="label">04 / About</p>
-<h2 class="split-title">architects and makers<span class="dot">.</span></h2>
-</div>
-
-<div class="split-body">
-<p>This is a collaboration between an architecture practice and a high-end residential glazing company.</p>
-<p>The architects design every studio. Our own joiners and glaziers build it in our workshop, and our own team installs it.</p>
-<a class="text-link" href="/contact">Talk to us →</a>
-</div>
-
-</section>
-
-<!---FAQ--->
-
-<section class="split" id="faq">
-
-<div class="split-head">
-
-<p class="label">05 / FAQ</p>
-<h2 class="split-title">good questions<span class="dot">.</span></h2>
-</div>
-
-<div class="split-body">
-
-<details class="faq-item">
-<summary>Will I need planning permission?</summary>
-<p>Usually not. We design every studio to sit within permitted development rules. Your property and plot can change that, so we check yours with you before anything is ordered.</p>
-</details>
-
-<details class="faq-item">
-<summary>Do you build near me?</summary>
-<p>Yes. We install across the whole of the UK.</p>
-</details>
-
-<details class="faq-item">
-<summary>Is it comfortable in winter?</summary>
-<p>Yes. Full insulation, high-performance glazing and heating keep it warm in January and cool in July, so it works as a real room all year.</p>
-</details>
-
-<details class="faq-item">
-<summary>What will it cost?</summary>
-<p>Choose your size and finishes in the configurator and the price updates as you go. No call needed.</p>
-</details>
-
-<details class="faq-item">
-<summary>How long until it's finished?</summary>
-<p>It depends on your site, groundwork and spec. We confirm a clear timeline before we start, so you know exactly what to expect.</p>
-</details>
-
-<details class="faq-item">
-<summary>What's the first step?</summary>
-<p>Design your studio in the configurator and send it to us. We'll talk through your garden and your plans, then map out what happens next.</p>
-</details>
-
-</div>
-</section>
-
-<!---CTA--->
-
-<section id="cta">
-
-<p class="label">06 / Next steps</p>
-<div class="cta-content">
-<h2>more room,<br>for life.</h2>
-<p>A little, or a lot more room for the things you love. Let’s find the right fit for your garden.</p>
-<div class="cta-links">
-<a href="/planning">Check your garden <span>→</span></a>
-<a href="/configurator">Design your studio <span>→</span></a>
-<a href="/contact">Talk to us <span>→</span></a>
-</div>
-
-</div>
-</section>
-
-</main>
-
-<!---FOOTER--->
-
-<footer id="footer">
-
-<div class="footer-logo">
-<a href="#introduction">the room beyond<span class="dot">.</span></a>
-<p>© 2026</p>
-</div>
-
-<nav class="footer-nav" aria-label="Footer">
-<p class="label">Navigate</p>
-<a href="#studios">Studios</a>
-<a href="#details">Specification</a>
-<a href="/planning">Check your garden →</a>
-<a href="/configurator">Design your studio →</a>
-<a href="/contact">Talk to us →</a>
-</nav>
-
-</footer>
-
-<script src="config.js"></script>
-<script src="script.js"></script>
-</body>
+      <nav class="footer-nav" aria-label="Footer">
+        <p class="label">Navigate</p>
+        <a href="#studios">Studios</a>
+        <a href="#details">Specification</a>
+        <a href="/planning">Check your garden →</a>
+        <a href="/configurator">Design your studio →</a>
+        <a href="/contact">Talk to us →</a>
+      </nav>
+    </footer>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
