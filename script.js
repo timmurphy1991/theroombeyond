@@ -1,151 +1,114 @@
-/* Shared utilities */
+/* Helpers */
 const $ = (selector, parent = document) => parent.querySelector(selector);
 const $$ = (selector, parent = document) => [...parent.querySelectorAll(selector)];
-const money = value => new Intl.NumberFormat(CONFIG.locale, {
-  style: "currency",
-  currency: CONFIG.currency,
-  maximumFractionDigits: 0
+const money = value => new Intl.NumberFormat("en-GB", {
+  style: "currency", currency: "GBP", maximumFractionDigits: 0
 }).format(value);
 
-$$('[data-price]').forEach(element => {
-  const studio = CONFIG.studios[element.dataset.price];
-  if (studio) element.textContent = money(studio.price);
+$$("[data-price]").forEach(el => {
+  const price = PRICES[el.dataset.price];
+  if (price) el.textContent = money(price);
 });
 
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* Viewport reveal */
-const fadeElements = $$('.fade-in');
-if (!reduceMotion && "IntersectionObserver" in window && fadeElements.length) {
+/* Reveal */
+const fadeElements = $$(".fade-in");
+if (!reduceMotion && "IntersectionObserver" in window) {
   document.documentElement.classList.add("motion-ready");
-  const fadeObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (entry.isIntersecting) {
       entry.target.classList.add("is-visible");
       observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.12, rootMargin: "0px 0px -32px 0px" });
-  fadeElements.forEach(element => fadeObserver.observe(element));
-} else {
-  fadeElements.forEach(element => element.classList.add("is-visible"));
-}
+    }
+  }), { threshold: .12, rootMargin: "0px 0px -32px 0px" });
+  fadeElements.forEach(el => observer.observe(el));
+} else fadeElements.forEach(el => el.classList.add("is-visible"));
 
 /* Navigation */
-const header = $('.intro-header');
+const header = $(".intro-header");
 if (header) {
-  const menuButton = $('.intro-menu-button', header);
-  const navigation = $('.intro-nav', header);
-  const mobileMenu = window.matchMedia("(max-width: 860px)");
-
-  if (menuButton && navigation) {
-    const setMenu = (open, returnFocus = false) => {
-      const isOpen = Boolean(open && mobileMenu.matches);
-      header.classList.toggle("menu-open", isOpen);
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
-      if (returnFocus) menuButton.focus();
-    };
-
-    menuButton.addEventListener("click", () => {
-      setMenu(menuButton.getAttribute("aria-expanded") !== "true");
-    });
-    navigation.addEventListener("click", event => {
-      if (event.target.closest("a")) setMenu(false);
-    });
-    document.addEventListener("click", event => {
-      if (!header.contains(event.target)) setMenu(false);
-    });
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape" && header.classList.contains("menu-open")) {
-        setMenu(false, true);
-      }
-    });
-    mobileMenu.addEventListener("change", () => setMenu(false));
-  }
-
-  const updateHeader = () => header.classList.toggle("scrolled", window.scrollY > 30);
-  window.addEventListener("scroll", updateHeader, { passive: true });
+  const menu = $(".intro-menu-button", header), nav = $(".intro-nav", header);
+  const mobile = matchMedia("(max-width: 860px)");
+  const closeMenu = () => {
+    header.classList.remove("menu-open");
+    menu?.setAttribute("aria-expanded", "false");
+    menu?.setAttribute("aria-label", "Open menu");
+  };
+  menu?.addEventListener("click", () => {
+    const open = !header.classList.contains("menu-open") && mobile.matches;
+    header.classList.toggle("menu-open", open);
+    menu.setAttribute("aria-expanded", String(open));
+    menu.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  });
+  nav?.addEventListener("click", e => { if (e.target.closest("a")) closeMenu(); });
+  document.addEventListener("click", e => { if (!header.contains(e.target)) closeMenu(); });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && header.classList.contains("menu-open")) {
+      closeMenu();
+      menu?.focus();
+    }
+  });
+  mobile.addEventListener("change", closeMenu);
+  const updateHeader = () => header.classList.toggle("scrolled", scrollY > 30);
+  addEventListener("scroll", updateHeader, { passive: true });
   updateHeader();
 }
 
 /* Hero slideshow */
-const hero = $('#introduction');
+const hero = $("#introduction");
 if (hero) {
-  const images = $$('.intro-image', hero);
-  const links = $$('.intro-studio-links a', hero);
-  const progress = $('.intro-progress', hero);
-  const detail = $('.intro-detail', hero);
+  const images = $$(".intro-image", hero), links = $$(".intro-studio-links a", hero);
+  const progress = $(".intro-progress", hero), detail = $(".intro-detail", hero);
   const duration = 6500;
-  let activeIndex = Math.max(0, images.findIndex(image => image.classList.contains("active")));
-  let heroTimer;
-  let paused = false;
+  let index = Math.max(0, images.findIndex(el => el.classList.contains("active")));
+  let timer, paused = false;
 
-  const stopHero = () => {
-    window.clearTimeout(heroTimer);
-    if (progress) progress.classList.remove("running");
+  const stop = () => {
+    clearTimeout(timer);
+    progress?.classList.remove("running");
   };
-
-  const scheduleHero = () => {
-    stopHero();
-    if (reduceMotion || paused || document.hidden || images.length < 2) return;
-    if (progress) {
-      void progress.offsetWidth;
-      progress.classList.add("running");
-    }
-    heroTimer = window.setTimeout(() => showHero(activeIndex + 1), duration);
-  };
-
-  const showHero = index => {
-    if (!images.length || images.length !== links.length) return;
-    activeIndex = (index + images.length) % images.length;
-    images.forEach((image, i) => image.classList.toggle("active", i === activeIndex));
-    links.forEach((link, i) => {
-      const active = i === activeIndex;
-      link.classList.toggle("active", active);
-      if (active) link.setAttribute("aria-current", "true");
-      else link.removeAttribute("aria-current");
+  const show = next => {
+    if (images.length !== links.length || !images.length) return;
+    index = (next + images.length) % images.length;
+    images.forEach((el, i) => el.classList.toggle("active", i === index));
+    links.forEach((el, i) => {
+      el.classList.toggle("active", i === index);
+      i === index ? el.setAttribute("aria-current", "true") : el.removeAttribute("aria-current");
     });
-
-    const studio = CONFIG.studios[links[activeIndex].dataset.studio];
-    if (detail && studio) detail.textContent = `${studio.sqft} sq ft / ${detail.dataset.finish}`;
-    scheduleHero();
-  };
-
-  links.forEach((link, index) => link.addEventListener("click", event => {
-    event.preventDefault();
-    paused = false;
-    showHero(index);
-  }));
-
-  hero.addEventListener("focusin", () => {
-    paused = true;
-    stopHero();
-  });
-  hero.addEventListener("focusout", event => {
-    if (!hero.contains(event.relatedTarget)) {
-      paused = false;
-      scheduleHero();
+    const studio = $(`#studio-${links[index].dataset.studio}`);
+    if (detail && studio) detail.textContent = `${studio.dataset.sqft || studio.querySelector(".dimensions span:last-child").textContent.split(" ")[0]} sq ft / ${detail.dataset.finish}`;
+    stop();
+    if (!reduceMotion && !paused && !document.hidden) {
+      void progress?.offsetWidth;
+      progress?.classList.add("running");
+      timer = setTimeout(() => show(index + 1), duration);
     }
+  };
+  links.forEach((link, i) => link.addEventListener("click", e => {
+    e.preventDefault(); paused = false; show(i);
+  }));
+  hero.addEventListener("focusin", () => { paused = true; stop(); });
+  hero.addEventListener("focusout", e => {
+    if (!hero.contains(e.relatedTarget)) { paused = false; show(index); }
   });
-  document.addEventListener("visibilitychange", scheduleHero);
-
-  if (images.length && images.length === links.length) showHero(activeIndex);
+  document.addEventListener("visibilitychange", () => show(index));
+  show(index);
 }
 
 /* Studio details and hotspots */
-const details = $('#details');
+const details = $("#details");
 if (details) {
-  const photo = $('#details-image', details);
-  const nextPhoto = $('#details-image-next', details);
-  const mobileImages = window.matchMedia("(max-width: 600px)");
-  const price = $('#details-price', details);
-  const sizeText = $('#details-size', details);
-  const buttons = $$('.details-buttons button', details);
-  const hotspotSets = $$('.hotspot-set', details);
-  const hotspots = $$('.hotspot', details);
-  let photoRequest = 0;
+  const photo = $("#details-image"), nextPhoto = $("#details-image-next");
+  const mobilePhoto = $("#details-image-mobile"), nextMobilePhoto = $("#details-image-next-mobile");
+  const mobile = matchMedia("(max-width: 600px)");
+  const price = $("#details-price"), sizeText = $("#details-size");
+  const buttons = $$(".details-buttons button", details);
+  const hotspotSets = $$(".hotspot-set", details);
+  const caption = $(".hotspot-description", details);
+  let request = 0;
 
-  const preloadImage = src => new Promise(resolve => {
+  const load = src => new Promise(resolve => {
     const image = new Image();
     image.onload = () => resolve(true);
     image.onerror = () => resolve(false);
@@ -153,123 +116,98 @@ if (details) {
   });
 
   const showDetails = async size => {
-    const studio = CONFIG.studios[size];
-    if (!studio || !photo) return;
-    const folder = mobileImages.matches ? "micro" : "macro";
-    const imageSrc = `images/home/${folder}/${studio.photo}.webp`;
+    const button = buttons.find(el => el.dataset.studio === String(size));
+    if (!button) return;
+    const macro = button.dataset.imageMacro, micro = button.dataset.imageMicro;
+    const src = mobile.matches ? micro : macro;
+    const current = ++request;
 
-    const request = ++photoRequest;
-
-    if (price) price.textContent = money(studio.price);
-    if (sizeText) sizeText.textContent = `${studio.sqft} sq ft. ${studio.description}`;
-    buttons.forEach(button => {
-      const active = button.dataset.studio === String(size);
-      button.classList.toggle("active", active);
-      button.setAttribute("aria-pressed", String(active));
+    if (price) price.textContent = money(PRICES[size]);
+    if (sizeText) sizeText.textContent = `${button.dataset.sqft} sq ft. ${button.dataset.description}`;
+    buttons.forEach(el => {
+      const active = el === button;
+      el.classList.toggle("active", active);
+      el.setAttribute("aria-pressed", String(active));
     });
     hotspotSets.forEach(set => {
       set.hidden = set.dataset.studio !== String(size);
-      $$('.hotspot', set).forEach(button => button.setAttribute("aria-expanded", "false"));
+      $$(".hotspot", set).forEach(el => el.setAttribute("aria-expanded", "false"));
     });
+    if (caption) { caption.hidden = true; caption.textContent = ""; }
 
-    if (photo.getAttribute("src") === imageSrc) return;
-    const loaded = await preloadImage(imageSrc);
-    if (request !== photoRequest || !loaded) return;
-
-    if (!nextPhoto) {
-      photo.src = imageSrc;
-      photo.alt = `Studio ${size} exterior`;
-      return;
-    }
-
-    // Load the incoming frame underneath the current one, then crossfade.
-    nextPhoto.src = imageSrc;
+    if (photo.src.endsWith(src)) return;
+    if (!await load(src) || current !== request) return;
+    nextPhoto.src = src;
     nextPhoto.alt = "";
-    if (nextPhoto.decode) {
-      try { await nextPhoto.decode(); } catch { /* preload already confirmed the image */ }
-    }
-    if (request !== photoRequest) return;
+    if (mobilePhoto) mobilePhoto.srcset = micro;
+    if (nextMobilePhoto) nextMobilePhoto.srcset = micro;
+    try { await nextPhoto.decode(); } catch {}
+    if (current !== request) return;
 
     details.classList.add("is-crossfading");
-    await new Promise(resolve => window.setTimeout(resolve, reduceMotion ? 0 : 550));
-    if (request !== photoRequest) {
-      details.classList.remove("is-crossfading");
-      return;
-    }
-
-    photo.src = imageSrc;
+    await new Promise(resolve => setTimeout(resolve, reduceMotion ? 0 : 550));
+    if (current !== request) { details.classList.remove("is-crossfading"); return; }
+    photo.src = src;
     photo.alt = `Studio ${size} exterior`;
+    if (mobilePhoto) mobilePhoto.srcset = micro;
     details.classList.remove("is-crossfading");
   };
 
   buttons.forEach(button => button.addEventListener("click", () => showDetails(button.dataset.studio)));
-  $$('.studio-explore-link').forEach(link => link.addEventListener("click", () => showDetails(link.dataset.size)));
-  hotspots.forEach(button => button.addEventListener("click", () => {
+  $$(".studio-explore-link").forEach(link => link.addEventListener("click", () => showDetails(link.dataset.size)));
+  $$(".hotspot", details).forEach(button => button.addEventListener("click", () => {
     const open = button.getAttribute("aria-expanded") !== "true";
-    hotspots.forEach(other => other.setAttribute("aria-expanded", "false"));
+    $$(".hotspot", details).forEach(el => el.setAttribute("aria-expanded", "false"));
     button.setAttribute("aria-expanded", String(open));
+    if (caption) {
+      caption.textContent = open ? button.dataset.note : "";
+      caption.hidden = !open;
+    }
   }));
   showDetails(120);
-  mobileImages.addEventListener("change", () => {
-    const active = buttons.find(button => button.classList.contains("active"));
-    showDetails(active?.dataset.studio || "120");
-  });
+  mobile.addEventListener("change", () => showDetails(buttons.find(el => el.classList.contains("active"))?.dataset.studio || 120));
 }
 
-
-/* FAQ: animate both opening and closing before changing the native details state */
-$$('.faq-item').forEach(item => {
-  const summary = $('summary', item);
-  if (!summary) return;
-
-  summary.addEventListener("click", event => {
-    if (item.classList.contains("is-closing")) {
-      event.preventDefault();
-      return;
-    }
-
+/* FAQ */
+$$(".faq-item").forEach(item => {
+  const summary = $("summary", item);
+  summary?.addEventListener("click", e => {
+    if (item.classList.contains("is-closing")) { e.preventDefault(); return; }
     if (item.open) {
-      event.preventDefault();
+      e.preventDefault();
       item.classList.add("is-closing");
-      window.setTimeout(() => {
-        item.open = false;
-        item.classList.remove("is-closing");
-      }, reduceMotion ? 0 : 320);
-      return;
+      setTimeout(() => { item.open = false; item.classList.remove("is-closing"); }, reduceMotion ? 0 : 320);
+    } else {
+      e.preventDefault();
+      item.open = true;
+      item.classList.remove("is-closing");
     }
-
-    event.preventDefault();
-    item.open = true;
-    item.classList.remove("is-closing");
   });
 });
 
-/* Restrained vegetation depth effect */
-const depthSections = $$('.depth');
+/* Vegetation depth */
+const depthSections = $$(".depth");
 if (!reduceMotion && depthSections.length && "IntersectionObserver" in window) {
-  const visibleSections = new Set();
-  let framePending = false;
-  const updateDepth = () => {
-    if (framePending) return;
-    framePending = true;
-    window.requestAnimationFrame(() => {
-      visibleSections.forEach(section => {
+  const visible = new Set();
+  let pending = false;
+  const update = () => {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(() => {
+      visible.forEach(section => {
         const rect = section.getBoundingClientRect();
-        const position = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+        const position = (rect.top + rect.height / 2 - innerHeight / 2) / innerHeight;
         section.style.setProperty("--p", Math.max(-1, Math.min(1, position)).toFixed(3));
       });
-      framePending = false;
+      pending = false;
     });
   };
-  const depthObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) visibleSections.add(entry.target);
-      else visibleSections.delete(entry.target);
-    });
-    updateDepth();
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => entry.isIntersecting ? visible.add(entry.target) : visible.delete(entry.target));
+    update();
   }, { rootMargin: "100px 0px" });
-  depthSections.forEach(section => depthObserver.observe(section));
-  window.addEventListener("scroll", updateDepth, { passive: true });
-  window.addEventListener("resize", updateDepth);
-  updateDepth();
+  depthSections.forEach(section => observer.observe(section));
+  addEventListener("scroll", update, { passive: true });
+  addEventListener("resize", update);
+  update();
 }
