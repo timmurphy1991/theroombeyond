@@ -172,8 +172,8 @@
       <!-- Details -->
       <section id="details" class="depth">
         <div class="details-image photo-stack">
-          <img class="bg" id="details-image" src="images/home/macro/06.webp" alt="Studio 120" loading="lazy">
-          <img class="bg details-image-next" id="details-image-next" src="images/home/macro/06.webp" alt="" aria-hidden="true">
+          <picture class="responsive-photo details-responsive-photo"><source media="(max-width: 600px)" srcset="images/home/micro/06.webp"><img class="bg" id="details-image" src="images/home/macro/06.webp" alt="Studio 120" loading="lazy"></picture>
+          <picture class="responsive-photo details-responsive-photo"><source media="(max-width: 600px)" srcset="images/home/micro/06.webp"><img class="bg details-image-next" id="details-image-next" src="images/home/macro/06.webp" alt="" aria-hidden="true"></picture>
           <img class="vegetation" id="details-vegetation" src="images/vegetation.png" alt="" aria-hidden="true" loading="lazy">
           <div class="shade" aria-hidden="true"></div>
           <p class="photo-label">02 / Details</p>
@@ -381,6 +381,25 @@
         <a href="/contact">Talk to us →</a>
       </nav>
     </footer>
+    <script>
+      // Keep the Details picture's mobile source in sync when script.js changes its image.
+      // The vegetation overlay is deliberately untouched and uses the same file on all devices.
+      document.querySelectorAll('.details-responsive-photo').forEach((picture) => {
+        const image = picture.querySelector('img');
+        const source = picture.querySelector('source');
+        const syncMobileSource = () => {
+          const imagePath = image.getAttribute('src');
+          if (imagePath && imagePath.includes('/macro/')) {
+            source.srcset = imagePath.replace('/macro/', '/micro/');
+          }
+        };
+        new MutationObserver(syncMobileSource).observe(image, {
+          attributes: true,
+          attributeFilter: ['src']
+        });
+        syncMobileSource();
+      });
+    </script>
     <script src="config.js"></script>
     <script src="script.js"></script>
   </body>
