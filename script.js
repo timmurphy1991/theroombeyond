@@ -99,6 +99,7 @@ if (hero) {
 /* Studio details and hotspots */
 const details = $("#details");
 if (details) {
+  const frame = $(".details-image", details);
   const photo = $("#details-image"), nextPhoto = $("#details-image-next");
   const mobilePhoto = $("#details-image-mobile"), nextMobilePhoto = $("#details-image-next-mobile");
   const mobile = matchMedia("(max-width: 600px)");
@@ -144,13 +145,13 @@ if (details) {
     try { await nextPhoto.decode(); } catch {}
     if (current !== request) return;
 
-    details.classList.add("is-crossfading");
+    frame.classList.add("is-crossfading");
     await new Promise(resolve => setTimeout(resolve, reduceMotion ? 0 : 550));
-    if (current !== request) { details.classList.remove("is-crossfading"); return; }
+    if (current !== request) { frame.classList.remove("is-crossfading"); return; }
     photo.src = src;
     photo.alt = `Studio ${size} exterior`;
     if (mobilePhoto) mobilePhoto.srcset = micro;
-    details.classList.remove("is-crossfading");
+    frame.classList.remove("is-crossfading");
   };
 
   buttons.forEach(button => button.addEventListener("click", () => showDetails(button.dataset.studio)));
