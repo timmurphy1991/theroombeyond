@@ -155,7 +155,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 /* Mobile */
 @media (max-width: 600px) {
   #introduction { display: flex; flex-direction: column; min-height: 100svh; }
-  .intro-visual { flex: 0 0 auto; height: auto; min-height: 0; aspect-ratio: 1.15 / 1; }
+  .intro-visual { flex: 0 0 auto; height: auto; min-height: 0; aspect-ratio: 2 / 1; }
   .intro-content { padding: 78px var(--gutter) 22px; }
   .intro-eyebrow { margin-bottom: 8px; font-size: 10px; }
   .intro-title { max-width: 100%; font-size: clamp(2.1rem, 8.5vw, 3rem); line-height: .98; }
