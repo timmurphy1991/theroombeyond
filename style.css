@@ -182,7 +182,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 /* Mobile */
 @media (max-width: 600px) {
-  .highlights { flex: 1; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; align-content: stretch; }
+.highlights { grid-auto-rows: auto; }
   .highlight { min-width: 0; padding: 18px var(--gutter); border: 0; }
   .highlight:nth-child(odd) { padding-left: var(--gutter); border-left: 0; }
   .highlight:nth-child(even) { padding-right: var(--gutter); border-left: 1px solid var(--line-on-dark); }
