@@ -21,7 +21,7 @@ if (!reduceMotion && "IntersectionObserver" in window) {
       entry.target.classList.add("is-visible");
       observer.unobserve(entry.target);
     }
-  }), { threshold: .12, rootMargin: "0px 0px -32px 0px" });
+  }), { threshold: .25, rootMargin: "0px 0px -32px 0px" });
   fadeElements.forEach(el => observer.observe(el));
 } else fadeElements.forEach(el => el.classList.add("is-visible"));
 
