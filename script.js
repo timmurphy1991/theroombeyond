@@ -169,22 +169,42 @@ if (details) {
   mobile.addEventListener("change", () => showDetails(buttons.find(el => el.classList.contains("active"))?.dataset.studio || 120));
 }
 
+
 /* FAQ */
+
 $$(".faq-item").forEach(item => {
   const summary = $("summary", item);
+  const answer = $(".faq-answer", item);
+
   summary?.addEventListener("click", e => {
-    if (item.classList.contains("is-closing")) { e.preventDefault(); return; }
+    e.preventDefault();
+
     if (item.open) {
-      e.preventDefault();
-      item.classList.add("is-closing");
-      setTimeout(() => { item.open = false; item.classList.remove("is-closing"); }, reduceMotion ? 0 : 320);
+      answer.style.height = answer.scrollHeight + "px";
+      requestAnimationFrame(() => answer.style.height = "0px");
+
+      answer.addEventListener("transitionend", function close() {
+        item.open = false;
+        answer.style.height = "";
+        answer.removeEventListener("transitionend", close);
+      }, { once: true });
+
     } else {
-      e.preventDefault();
       item.open = true;
-      item.classList.remove("is-closing");
+      answer.style.height = "0px";
+
+      requestAnimationFrame(() => {
+        answer.style.height = answer.scrollHeight + "px";
+      });
+
+      answer.addEventListener("transitionend", function finish() {
+        answer.style.height = "auto";
+        answer.removeEventListener("transitionend", finish);
+      }, { once: true });
     }
   });
 });
+
 
 /* Vegetation depth */
 const depthSections = $$(".depth");
