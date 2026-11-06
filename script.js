@@ -12,6 +12,28 @@ $$("[data-price]").forEach(el => {
 
 const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/*---STUDIO CARD REVEAL---*/
+
+const studioCards = document.querySelectorAll('.studio');
+
+if ('IntersectionObserver' in window) {
+  const studioObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        studioObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  studioCards.forEach(card => studioObserver.observe(card));
+} else {
+  studioCards.forEach(card => card.classList.add('is-visible'));
+}
+
 /* Reveal */
 const fadeElements = $$(".fade-in");
 if (!reduceMotion && "IntersectionObserver" in window) {
@@ -96,8 +118,10 @@ if (hero) {
   show(index);
 }
 
-/* Studio details and hotspots */
+/*---STUDIO DETAILS AND HOTSPOTS🟧---*/
+
 const details = $("#details");
+
 if (details) {
   const frame = $(".details-image", details);
   const photo = $("#details-image"), nextPhoto = $("#details-image-next");
@@ -119,56 +143,89 @@ if (details) {
   const showDetails = async size => {
     const button = buttons.find(el => el.dataset.studio === String(size));
     if (!button) return;
-    const macro = button.dataset.imageMacro, micro = button.dataset.imageMicro;
+
+    const macro = button.dataset.imageMacro;
+    const micro = button.dataset.imageMicro;
     const src = mobile.matches ? micro : macro;
     const current = ++request;
 
     if (price) price.textContent = money(PRICES[size]);
     if (sizeText) sizeText.textContent = `${button.dataset.sqft} sq ft. ${button.dataset.description}`;
+
     buttons.forEach(el => {
       const active = el === button;
       el.classList.toggle("active", active);
       el.setAttribute("aria-pressed", String(active));
     });
+
     hotspotSets.forEach(set => {
       set.hidden = set.dataset.studio !== String(size);
       $$(".hotspot", set).forEach(el => el.setAttribute("aria-expanded", "false"));
     });
-    if (caption) { caption.hidden = true; caption.textContent = ""; }
+
+    if (caption) {
+      caption.hidden = true;
+      caption.textContent = "";
+    }
 
     if (photo.src.endsWith(src)) return;
     if (!await load(src) || current !== request) return;
+
     nextPhoto.src = src;
     nextPhoto.alt = "";
+
     if (mobilePhoto) mobilePhoto.srcset = micro;
     if (nextMobilePhoto) nextMobilePhoto.srcset = micro;
+
     try { await nextPhoto.decode(); } catch {}
+
     if (current !== request) return;
 
     frame.classList.add("is-crossfading");
+
     await new Promise(resolve => setTimeout(resolve, reduceMotion ? 0 : 550));
-    if (current !== request) { frame.classList.remove("is-crossfading"); return; }
+
+    if (current !== request) return;
+
     photo.src = src;
     photo.alt = `Studio ${size} exterior`;
+
     if (mobilePhoto) mobilePhoto.srcset = micro;
+
     frame.classList.remove("is-crossfading");
   };
 
-  buttons.forEach(button => button.addEventListener("click", () => showDetails(button.dataset.studio)));
-  $$(".studio-explore-link").forEach(link => link.addEventListener("click", () => showDetails(link.dataset.size)));
-  $$(".hotspot", details).forEach(button => button.addEventListener("click", () => {
-    const open = button.getAttribute("aria-expanded") !== "true";
-    $$(".hotspot", details).forEach(el => el.setAttribute("aria-expanded", "false"));
-    button.setAttribute("aria-expanded", String(open));
-    if (caption) {
-      caption.textContent = open ? button.dataset.note : "";
-      caption.hidden = !open;
-    }
-  }));
-  showDetails(120);
-  mobile.addEventListener("change", () => showDetails(buttons.find(el => el.classList.contains("active"))?.dataset.studio || 120));
-}
+  buttons.forEach(button => {
+    button.addEventListener("click", () => showDetails(button.dataset.studio));
+  });
 
+  $$(".studio-explore-link").forEach(link => {
+    link.addEventListener("click", () => showDetails(link.dataset.size));
+  });
+
+  $$(".hotspot", details).forEach(button => {
+    button.addEventListener("click", () => {
+      const open = button.getAttribute("aria-expanded") !== "true";
+
+      $$(".hotspot", details).forEach(el => {
+        el.setAttribute("aria-expanded", "false");
+      });
+
+      button.setAttribute("aria-expanded", String(open));
+
+      if (caption) {
+        caption.textContent = open ? button.dataset.note : "";
+        caption.hidden = !open;
+      }
+    });
+  });
+
+  showDetails(120);
+
+  mobile.addEventListener("change", () => {
+    showDetails(buttons.find(el => el.classList.contains("active"))?.dataset.studio || 120);
+  });
+}
 
 /* FAQ */
 
