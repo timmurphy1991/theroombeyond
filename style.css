@@ -183,20 +183,16 @@ to { transform: scaleX(1); }
 @media (max-width: 720px) {
 #introduction { display: flex; flex-direction: column; min-height: 100svh; }
 .intro-visual { flex: 0 0 auto; height: auto; min-height: 0; aspect-ratio: 1 / 1; }
-.intro-content { padding: 78px var(--gutter) 22px; }
-.intro-eyebrow { margin-bottom: 8px; font-size: 10px; }
-.intro-title { max-width: 100%; font-size: 2.6rem; line-height: .98; }
-.intro-copy { max-width: 340px; margin: 10px 0 12px; font-size: 11px; line-height: 1.5; }
-.intro-studios { width: 100%; max-width: 320px; margin: 18px auto 0; text-align: center; }
-.intro-studios-label { margin-bottom: 4px; font-size: 10px; text-align: center; }
-.intro-studio-links { gap: 8px; }
-.intro-studio-links a { min-height: 38px; padding: 7px; font-size: 12px; }
-.intro-progress { margin-top: 5px; }
 .intro-content { padding: 120px var(--gutter) 28px; }
-.intro-title { font-size: 4rem; }
-.intro-studios { width: 240px; margin-top: 28px; }
+.intro-eyebrow { margin-bottom: 8px; font-size: 10px; }
+.intro-title { max-width: 100%; font-size: clamp(3rem, 11vw, 3.6rem); line-height: .98; }
+.intro-copy { max-width: 340px; margin: 14px 0 12px; font-size: 11px; line-height: 1.5; }
+.intro-studios { width: 100%; max-width: 360px; margin: 28px auto 0; text-align: center; }
+.intro-studios-label { margin-bottom: 6px; font-size: 10px; }
+.intro-studio-links { gap: 8px; }
+.intro-studio-links a { min-height: 40px; padding: 8px; font-size: 12px; }
+.intro-progress { margin-top: 5px; }
 .intro-detail { display: none; }
-.intro-title { font-size: 4.8rem; }
 }
 
 /*---HIGHLIGHTS🟧---*/
@@ -216,11 +212,12 @@ to { transform: scaleX(1); }
 }
 
 @media (max-width: 600px) {
-.highlights { flex: 1; grid-auto-rows: 1fr; align-content: stretch; }
-.highlight { padding: 18px var(--gutter); border: 0; }
+.highlights { flex: 1; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); align-content: stretch; }
+.highlight { display: flex; flex-direction: column; justify-content: center; min-height: 0; padding: 18px var(--gutter); border: 0; }
 .highlight:nth-child(even) { border-left: 1px solid var(--line-on-dark); }
+.highlight:nth-child(n+3) { border-top: 1px solid var(--line-on-dark); }
 .highlight .highlight-label { margin-bottom: 7px; font-size: 10px; opacity: 1; }
-.highlight p { max-width: 100%; font-size: 11px; line-height: 1.45; }
+.highlight p { max-width: 100%; font-size: 11px; line-height: 1.5; }
 }
 
 /*---STUDIOS🟧---*/
