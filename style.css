@@ -7,13 +7,13 @@
 --accent: rgb(171,72,48);/**/
 --dark: rgb(48,51,45);/**/
 --light: rgb(240,234,219);/**/
---glass: rgba(239, 233, 218, .94);
---line: rgba(48, 52, 46, .22);
---line-on-dark: rgba(239, 233, 218, .25);
+--glass: rgba(240,234,219,.75);/**/
+--line: rgba(48,51,45,.25);/**/
+--line-on-dark: rgba(240,234,219,.25);/**/
 
---pastel-60: rgb(219,211, 190);   /* Faded ochre */
---pastel-90: rgb(199, 205, 183);   /* Dusty sage */
---pastel-120: rgb(206, 184, 161);  /* Muted terracotta */
+--pastel-60: rgb(231,222,198);/**/
+--pastel-90: rgb(204,198,165);/**/
+--pastel-120: rgb(216,195,168);/**/
 
 /*Layout🟧*/
 
@@ -27,7 +27,7 @@
 
 --small-font: 12px;
 --medium-font: 15px;
---display: serif;
+--display: "Georgia", serif;
 --mono: monospace;
 
 }
@@ -224,7 +224,8 @@ to { transform: scaleX(1); }
 
 .studios-head { max-width: 680px; margin-bottom: 3rem; }
 .studio-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.studio { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border-radius: var(--round); background: var(--studio-colour); color: var(--dark); transition: background .3s ease; }
+.studio { position: relative; isolation: isolate; display: flex; flex-direction: column; min-width: 0; overflow: hidden; border-radius: var(--round); background: var(--studio-colour); color: var(--dark); transition: background .3s ease; }
+.studio::before { content: ""; position: absolute; inset: 0; z-index: -1; background-image: url("images/noise.png"); background-repeat: repeat; opacity: .5; pointer-events: none; }
 .studio .drawing { padding: 2.5rem 1.25rem 0; }
 .studio .elevation { display: block; width: 100%; height: auto; aspect-ratio: 5100 / 2475; overflow: visible; }
 .studio .elevation :is(.outer-frame, .inner-frame, .ground, .mullion, .line-2, .line-3, .glazing) { fill: none; stroke: var(--dark); stroke-width: 1.5; stroke-linecap: square; stroke-linejoin: miter; vector-effect: non-scaling-stroke; }
@@ -238,15 +239,15 @@ to { transform: scaleX(1); }
 .studio .button:hover { border-color: var(--dark); background: var(--dark); color: var(--light); }
 
 @media (max-width: 900px) {
-.studio-grid { grid-template-columns: 1fr; }
-.studio-title h3 { font-size: 1.4rem; }
+  .studio-grid { grid-template-columns: 1fr; }
+  .studio-title h3 { font-size: 1.4rem; }
 }
 
 @media (max-width: 600px) {
-.studio .drawing { padding: 2rem 1rem 0; }
-.studio .dimensions { padding-inline: 1rem; font-size: 10px; }
-.studio-title, .studio-links { padding-inline: 1rem; }
-.studio .description { margin-inline: 1rem; }
+  .studio .drawing { padding: 2rem 1rem 0; }
+  .studio .dimensions { padding-inline: 1rem; font-size: 10px; }
+  .studio-title, .studio-links { padding-inline: 1rem; }
+  .studio .description { margin-inline: 1rem; }
 }
 
 /*---STUDIO CARD REVEAL---*/
@@ -343,7 +344,7 @@ to { transform: scaleX(1); }
 .gallery-static { font-size: var(--medium-font); letter-spacing: .02em; }
 .gallery-word-wrap { height: clamp(4rem, 9vw, 8rem); overflow: hidden; }
 .gallery-words { display: flex; flex-direction: column; animation: galleryWords 9s infinite; }
-.gallery-words span { display: flex; align-items: center; justify-content: center; height: clamp(4rem, 9vw, 8rem); font-family: Georgia, serif; font-size: clamp(4rem, 9vw, 8rem); font-weight: 500; font-style: italic; line-height: 1; white-space: nowrap; }
+.gallery-words span { display: flex; align-items: center; justify-content: center; height: clamp(4rem, 9vw, 8rem); font-family: var(--display); font-size: clamp(4rem, 9vw, 8rem); font-weight: 500; font-style: italic; line-height: 1; white-space: nowrap; }
 
 @keyframes galleryWords {
 0%, 28% { transform: translateY(0); }
