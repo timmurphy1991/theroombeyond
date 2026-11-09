@@ -16,15 +16,15 @@
 
 <header class="intro-header">
 <a href="/" class="intro-logo">the room beyond<span class="dot">.</span></a>
-<nav class="intro-nav" id="intro-navigation" aria-label="Main navigation">
+<nav class="intro-nav" id="intro-navigation">
 <a href="#studios">Studios</a>
 <a href="#details">Details</a>
 <a href="/planning">Check your garden</a>
 <a href="/configurator">Design your studio</a>
 </nav>
 
-<button class="intro-menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="intro-navigation">
-<span class="intro-menu-icon" aria-hidden="true"></span>
+<button class="intro-menu-button" type="button">
+<span class="intro-menu-icon"></span>
 </button>
 </header>
 
@@ -34,21 +34,21 @@
 
 <section id="introduction" class="depth">
 <div class="intro-visual">
-<div class="intro-images" aria-hidden="true">
+<div class="intro-images">
 <div class="photo-stack intro-image">
 <picture class="responsive-photo"><source media="(max-width: 720px)" srcset="images/home/micro/01.webp"><img class="bg" src="images/home/macro/01.webp" alt=""></picture>
-<img class="vegetation" src="images/vegetation.png" alt="" aria-hidden="true">
-              <div class="shade" aria-hidden="true"></div>
+<img class="vegetation" src="images/vegetation.png" alt="">
+              <div class="shade"></div>
             </div>
             <div class="photo-stack intro-image active">
               <picture class="responsive-photo"><source media="(max-width: 720px)" srcset="images/home/micro/02.webp"><img class="bg" src="images/home/macro/02.webp" alt=""></picture>
-              <img class="vegetation" src="images/vegetation.png" alt="" aria-hidden="true">
-              <div class="shade" aria-hidden="true"></div>
+              <img class="vegetation" src="images/vegetation.png" alt="">
+              <div class="shade"></div>
             </div>
             <div class="photo-stack intro-image">
               <picture class="responsive-photo"><source media="(max-width: 720px)" srcset="images/home/micro/03.webp"><img class="bg" src="images/home/macro/03.webp" alt=""></picture>
-              <img class="vegetation" src="images/vegetation.png" alt="" aria-hidden="true">
-              <div class="shade" aria-hidden="true"></div>
+              <img class="vegetation" src="images/vegetation.png" alt="">
+              <div class="shade"></div>
             </div>
           </div>
           <div class="intro-content">
@@ -59,37 +59,45 @@
               <p class="intro-studios-label">Studio</p>
               <div class="intro-studio-links">
                 <a href="#studio-60" data-studio="60">60</a>
-                <a href="#studio-90" data-studio="90" class="active" aria-current="true">90</a>
+                <a href="#studio-90" data-studio="90" class="active">90</a>
                 <a href="#studio-120" data-studio="120">120</a>
               </div>
-              <div class="intro-progress" aria-hidden="true">
+              <div class="intro-progress">
                 <span></span>
               </div>
             </div>
           </div>
           <p class="intro-detail" data-finish="Narrow Charred"></p>
         </div>
-        <!-- Highlights -->
-        <section class="highlights" aria-label="Studio highlights">
-          <div class="highlight">
-            <h3 class="highlight-label">Usually no planning</h3>
-            <p>Designed for permitted development. We check this for you prior to ordering.</p>
-          </div>
-          <div class="highlight">
-            <h3 class="highlight-label">Made properly</h3>
-            <p>Built by experienced hands. Our joiners and glaziers are all in house.</p>
-          </div>
-          <div class="highlight">
-            <h3 class="highlight-label">Year round use</h3>
-            <p>Warm in January, cool in July. Dual-layer insulation and our shading system.</p>
-          </div>
-          <div class="highlight">
-            <h3 class="highlight-label">Designed to last</h3>
-            <p>Premium natural materials and an included 10 year structural warranty.</p>
-          </div>
-        </section>
-      </section>
-      <!-- Studios -->
+
+<!---HIGHLIGHTS--->
+
+<section class="highlights">
+
+<div class="highlight">
+<h3 class="highlight-label">Usually no planning</h3>
+<p>Designed for permitted development. We check this for you prior to ordering.</p>
+</div>
+
+<div class="highlight">
+<h3 class="highlight-label">Made properly</h3>
+<p>Built by experienced hands. Our joiners and glaziers are all in house.</p>
+</div>
+
+<div class="highlight">
+<h3 class="highlight-label">Year round use</h3>
+<p>Warm in January, cool in July. Dual-layer insulation and our shading system.</p>
+</div>
+
+<div class="highlight">
+<h3 class="highlight-label">Designed to last</h3>
+<p>Premium natural materials and an included 10 year structural warranty.</p>
+</div>
+
+</section>
+</section>
+
+<!---STUDIOS--->
 
       <section id="studios">
         <header class="studios-head">
@@ -100,7 +108,7 @@
         <div class="studio-grid">
           <article class="studio studio--60" id="studio-60">
             <div class="drawing">
-              <svg class="elevation" viewBox="0 0 5100 2475" aria-hidden="true">
+              <svg class="elevation" viewBox="0 0 5100 2475">
                 <path class="outer-frame" d="M1050 0 H4050 V2400 H4000 V2475 H1100 V2400 H1050 Z"></path>
                 <path class="inner-frame" d="M1100 2400 H1200 V225 H3900 V2400 H4000"></path>
                 <rect class="glazing" x="1200" y="225" width="1800" height="2100"></rect>
@@ -126,7 +134,7 @@
           </article>
           <article class="studio studio--90" id="studio-90">
             <div class="drawing">
-              <svg class="elevation" viewBox="0 0 5100 2475" aria-hidden="true">
+              <svg class="elevation" viewBox="0 0 5100 2475">
                 <path class="outer-frame" d="M600 0 H4500 V2400 H4450 V2475 H650 V2400 H600 Z"></path>
                 <path class="inner-frame" d="M650 2400 H750 V225 H4350 V2400 H4450"></path>
                 <rect class="glazing" x="750" y="225" width="2400" height="2100"></rect>
@@ -152,7 +160,7 @@
           </article>
           <article class="studio studio--120" id="studio-120">
             <div class="drawing">
-              <svg class="elevation" viewBox="0 0 5100 2475" aria-hidden="true">
+              <svg class="elevation" viewBox="0 0 5100 2475">
                 <path class="outer-frame" d="M0 0 H5100 V2400 H5050 V2475 H50 V2400 H0 Z"></path>
                 <path class="inner-frame" d="M50 2400 H150 V225 H3750 V2400 H5050"></path>
                 <rect class="glazing" x="1350" y="225" width="2400" height="2100"></rect>
@@ -179,103 +187,107 @@
         </div>
       </section>
       
-      <!-- Details -->
-      <section id="details" class="depth">
-        <div class="details-image photo-stack">
-          <picture class="responsive-photo"><source id="details-image-mobile" media="(max-width: 720px)" srcset="images/home/micro/06.webp"><img class="bg" id="details-image" src="images/home/macro/06.webp" alt="Studio 120" loading="lazy"></picture>
-          <picture class="responsive-photo"><source id="details-image-next-mobile" media="(max-width: 720px)" srcset="images/home/micro/06.webp"><img class="bg details-image-next" id="details-image-next" src="images/home/macro/06.webp" alt="" aria-hidden="true"></picture>
-          <img class="vegetation" id="details-vegetation" src="images/vegetation.png" aria-hidden="true" loading="lazy">
-          <div class="shade" aria-hidden="true"></div>
-          <p class="photo-label">02 / Details</p>
-          <p class="photo-caption">Wide Ash</p>
-          <div class="details-hotspots" aria-label="Studio details">
-            <p class="hotspot-description" aria-live="polite" hidden></p>
-            <div class="hotspot-set" data-studio="60" hidden>
-              <button class="hotspot" data-hotspot="cladding" data-note="Thermowood cladding, machined for a clean, consistent finish." style="left:33%;top:50%" aria-label="Cladding" aria-expanded="false">
-                
-              </button>
-              <button class="hotspot" data-hotspot="door" data-note="Door." style="left:60%;top:50%" aria-label="Door" aria-expanded="false">
-                
-              </button>
-              <button class="hotspot" data-hotspot="interior" data-note="Interior." style="left:50%;top:33%" aria-label="Interior" aria-expanded="false">
-                
-              </button>
-              <button class="hotspot" data-hotspot="structure" data-note="Structure." style="left:60%;top:18%" aria-label="Structure" aria-expanded="false">
-                
-              </button>
-              <button class="hotspot" data-hotspot="window" data-note="Window." style="left:25%;top:33%" aria-label="Window" aria-expanded="false">
-                
-              </button>
-            </div>
-            <div class="hotspot-set" data-studio="90" hidden>
-              <button class="hotspot" data-hotspot="cladding" data-note="Thermowood cladding, available in narrow or wide boards." style="left:22%;top:30%" aria-label="Cladding" aria-expanded="false">
-                
-              </button>
-              <button class="hotspot" data-hotspot="glazing" data-note="High-performance glazing, made and fitted by our own team." style="left:60%;top:42%" aria-label="Glazing" aria-expanded="false">
-                
-              </button>
-              <button class="hotspot" data-hotspot="interior" data-note="Natural birch plywood for a warm, understated interior." style="left:72%;top:58%" aria-label="Interior" aria-expanded="false">
-                
-              </button>
-              <button class="hotspot" data-hotspot="structure" data-note="Insulated walls, roof and floor for comfortable year-round use." style="left:38%;top:78%" aria-label="Structure" aria-expanded="false">
-                
-              </button>
-            </div>
-            <div class="hotspot-set" data-studio="120">
-              <button class="hotspot" data-hotspot="cladding" data-note="Thermowood cladding, machined for a clean, consistent finish." style="left:10%;top:34%" aria-label="Cladding" aria-expanded="false">
-                
-              </button>
-              <button class="hotspot" data-hotspot="glazing" data-note="High-performance glazing, made and fitted by our own team." style="left:58%;top:48%" aria-label="Glazing" aria-expanded="false">
-                
-              </button>
-              <button class="hotspot" data-hotspot="interior" data-note="Natural birch plywood, left clean and unadorned." style="left:76%;top:42%" aria-label="Interior" aria-expanded="false">
-                
-              </button>
-              <button class="hotspot" data-hotspot="structure" data-note="An insulated structure designed for year-round use." style="left:76%;top:72%" aria-label="Structure" aria-expanded="false">
-                
-              </button>
-              <button class="hotspot" data-hotspot="comfort" data-note="Integrated lighting, double sockets and heating and cooling." style="left:40%;top:62%" aria-label="Comfort" aria-expanded="false">
-                
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="details-info">
-          <h2>studio<span class="dot">.</span></h2>
-          <p class="details-price">From <span id="details-price"></span></p>
-          <div class="details-buttons">
-            <button type="button" data-studio="60" aria-pressed="false" data-sqft="58" data-description="Compact and composed, made for focused work." data-image-macro="images/home/macro/04.webp" data-image-micro="images/home/micro/04.webp">60</button>
-            <button type="button" data-studio="90" aria-pressed="false" data-sqft="89" data-description="Space to work, create and unwind in comfort." data-image-macro="images/home/macro/05.webp" data-image-micro="images/home/micro/05.webp">90</button>
-            <button type="button" data-studio="120" class="active" aria-pressed="true" data-sqft="119" data-description="Our largest studio, generous in proportion." data-image-macro="images/home/macro/06.webp" data-image-micro="images/home/micro/06.webp">120</button>
-          </div>
-          <div class="details-specs">
-            <div class="details-spec">
-              <h3>01 / Size</h3>
-              <p id="details-size"></p>
-            </div>
-            <div class="details-spec">
-              <h3>02 / Structure</h3>
-              <p>Insulated walls, roof and floor, with integrated shading for year-round comfort.</p>
-            </div>
-            <div class="details-spec">
-              <h3>03 / Exterior</h3>
-              <p>Ash or charred Thermowood, available in narrow or wide board profiles.</p>
-            </div>
-            <div class="details-spec">
-              <h3>04 / Interior</h3>
-              <p>Natural birch plywood to walls and ceiling, with a considered choice of flooring.</p>
-            </div>
-            <div class="details-spec">
-              <h3>05 / Glazing</h3>
-              <p>Argon-filled, high-performance glazing with integrated UV protection.</p>
-            </div>
-            <div class="details-spec">
-              <h3>06 / Comfort</h3>
-              <p>Interior and exterior lighting, double sockets and Wi-Fi controlled heating.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+<!---DETAILS--->
+
+
+<section id="details" class="depth">
+
+  <div class="details-image photo-stack">
+
+    <picture>
+      <source id="details-image-mobile" media="(max-width: 720px)" srcset="images/home/micro/06.webp">
+      <img id="details-image" class="bg" src="images/home/macro/06.webp" alt="Studio 120">
+    </picture>
+
+    <picture>
+      <source id="details-image-next-mobile" media="(max-width: 720px)" srcset="images/home/micro/06.webp">
+      <img id="details-image-next" class="bg details-image-next" src="images/home/macro/06.webp" alt="">
+    </picture>
+
+    <img id="details-vegetation" class="vegetation" src="images/vegetation.png" alt="">
+
+    <div class="shade"></div>
+
+    <p class="photo-label">02 / Details</p>
+    <p class="photo-caption">Wide Ash</p>
+
+    <div class="details-hotspots">
+
+      <p class="hotspot-description" hidden></p>
+
+      <div class="hotspot-set" data-studio="60" hidden>
+        <button class="hotspot" data-hotspot="cladding" data-note="Thermowood cladding, machined for a clean, consistent finish." style="left:33%;top:50%"></button>
+        <button class="hotspot" data-hotspot="door" data-note="Door." style="left:60%;top:50%"></button>
+        <button class="hotspot" data-hotspot="interior" data-note="Interior." style="left:50%;top:33%"></button>
+        <button class="hotspot" data-hotspot="structure" data-note="Structure." style="left:60%;top:18%"></button>
+        <button class="hotspot" data-hotspot="window" data-note="Window." style="left:25%;top:33%"></button>
+      </div>
+
+      <div class="hotspot-set" data-studio="90" hidden>
+        <button class="hotspot" data-hotspot="cladding" data-note="Thermowood cladding, available in narrow or wide boards." style="left:22%;top:30%"></button>
+        <button class="hotspot" data-hotspot="glazing" data-note="High-performance glazing, made and fitted by our own team." style="left:60%;top:42%"></button>
+        <button class="hotspot" data-hotspot="interior" data-note="Natural birch plywood for a warm, understated interior." style="left:72%;top:58%"></button>
+        <button class="hotspot" data-hotspot="structure" data-note="Insulated walls, roof and floor for comfortable year-round use." style="left:38%;top:78%"></button>
+      </div>
+
+      <div class="hotspot-set" data-studio="120">
+        <button class="hotspot" data-hotspot="cladding" data-note="Thermowood cladding, machined for a clean, consistent finish." style="left:10%;top:34%"></button>
+        <button class="hotspot" data-hotspot="glazing" data-note="High-performance glazing, made and fitted by our own team." style="left:58%;top:48%"></button>
+        <button class="hotspot" data-hotspot="interior" data-note="Natural birch plywood, left clean and unadorned." style="left:76%;top:42%"></button>
+        <button class="hotspot" data-hotspot="structure" data-note="An insulated structure designed for year-round use." style="left:76%;top:72%"></button>
+        <button class="hotspot" data-hotspot="comfort" data-note="Integrated lighting, double sockets and heating and cooling." style="left:40%;top:62%"></button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="details-info">
+
+    <h2>studio<span class="dot">.</span></h2>
+    <p class="details-price">From <span id="details-price"></span></p>
+
+    <div class="details-buttons">
+      <button type="button" data-studio="60" data-sqft="58" data-description="Compact and composed, made for focused work." data-image-macro="images/home/macro/04.webp" data-image-micro="images/home/micro/04.webp">60</button>
+      <button type="button" data-studio="90" data-sqft="89" data-description="Space to work, create and unwind in comfort." data-image-macro="images/home/macro/05.webp" data-image-micro="images/home/micro/05.webp">90</button>
+      <button type="button" data-studio="120" class="active" data-sqft="119" data-description="Our largest studio, generous in proportion." data-image-macro="images/home/macro/06.webp" data-image-micro="images/home/micro/06.webp">120</button>
+    </div>
+
+    <div class="details-specs">
+
+      <div class="details-spec">
+        <h3>01 / Size</h3>
+        <p id="details-size"></p>
+      </div>
+
+      <div class="details-spec">
+        <h3>02 / Structure</h3>
+        <p>Insulated walls, roof and floor, with integrated shading for year-round comfort.</p>
+      </div>
+
+      <div class="details-spec">
+        <h3>03 / Exterior</h3>
+        <p>Ash or charred Thermowood, available in narrow or wide board profiles.</p>
+      </div>
+
+      <div class="details-spec">
+        <h3>04 / Interior</h3>
+        <p>Natural birch plywood to walls and ceiling, with a considered choice of flooring.</p>
+      </div>
+
+      <div class="details-spec">
+        <h3>05 / Glazing</h3>
+        <p>Argon-filled, high-performance glazing with integrated UV protection.</p>
+      </div>
+
+      <div class="details-spec">
+        <h3>06 / Comfort</h3>
+        <p>Interior and exterior lighting, double sockets and Wi-Fi controlled heating.</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
 
 <!---PROCESS✅--->
 

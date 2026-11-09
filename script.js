@@ -208,6 +208,144 @@ if (details) {
   const hotspotSets = $$(".hotspot-set", details);
   const caption = $(".hotspot-description", details);
 
+  // Keep the desktop hotspot caption inside the browser viewport while scrolling.
+  const desktopHotspots = matchMedia("(min-width: 961px)");
+  let hotspotScrollFrame = 0;
+
+  const updateHotspotScroll = () => {
+    if (!caption) return;
+
+    if (reduceMotion || !desktopHotspots.matches || caption.hidden) {
+      caption.style.transform = "";
+      return;
+    }
+
+    if (hotspotScrollFrame) return;
+
+    hotspotScrollFrame = requestAnimationFrame(() => {
+      hotspotScrollFrame = 0;
+
+      if (!desktopHotspots.matches || caption.hidden) {
+        caption.style.transform = "";
+        return;
+      }
+
+      const image = $(".details-image", details);
+      if (!image) return;
+
+      const imageRect = image.getBoundingClientRect();
+      const captionRect = caption.getBoundingClientRect();
+
+      // Remove the current animated translateY from the measured position.
+      // This prevents each scroll update from accumulating another offset.
+      const transform = getComputedStyle(caption).transform;
+      let currentY = 0;
+
+      if (transform !== "none") {
+        const values = transform.match(/matrix(?:3d)?\(([^)]+)\)/);
+        if (values) {
+          const parts = values[1].split(",").map(Number);
+          currentY = parts.length === 16 ? parts[13] :
+            parts.length === 6 ? parts[5] : 0;
+        }
+      }
+
+      const naturalTop = captionRect.top - currentY;
+      const naturalBottom = captionRect.bottom - currentY;
+      const viewportGutter = 24;
+      const maxTravel = imageRect.height * 0.25;
+
+      let movement = 0;
+
+      // Move up if the caption would fall below the viewport.
+      if (naturalBottom > innerHeight - viewportGutter) {
+        movement = innerHeight - viewportGutter - naturalBottom;
+      }
+      // Move down if the caption would disappear above the viewport.
+      else if (naturalTop < viewportGutter) {
+        movement = viewportGutter - naturalTop;
+      }
+
+      movement = Math.max(-maxTravel, Math.min(maxTravel, movement));
+
+      caption.style.transform = movement
+        ? `translateY(${movement}px)`
+        : "";
+    });
+  };
+
+  let captionHideTimer = 0;
+  let captionFadeFrame = 0;
+
+  const setCaption = (show, text = "") => {
+    if (!caption) return;
+
+    clearTimeout(captionHideTimer);
+    cancelAnimationFrame(captionFadeFrame);
+
+    caption.setAttribute("aria-hidden", String(!show));
+    caption.style.transition = reduceMotion
+      ? "none"
+      : "opacity .25s ease, transform .15s ease-out";
+
+    if (show) {
+      caption.textContent = text;
+      caption.hidden = false;
+      caption.style.visibility = "visible";
+      caption.style.opacity = reduceMotion ? "1" : "0";
+
+      if (reduceMotion) {
+        updateHotspotScroll();
+        return;
+      }
+
+      // Commit the starting opacity before fading in.
+      caption.getBoundingClientRect();
+
+      captionFadeFrame = requestAnimationFrame(() => {
+        caption.style.opacity = "1";
+        updateHotspotScroll();
+      });
+
+    } else {
+      caption.style.opacity = "0";
+
+      if (reduceMotion) {
+        caption.hidden = true;
+        caption.style.transform = "";
+        caption.style.visibility = "";
+        return;
+      }
+
+      // Hide only after the fade-out has finished.
+      captionHideTimer = window.setTimeout(() => {
+        if (caption.getAttribute("aria-hidden") === "true") {
+          caption.hidden = true;
+          caption.style.transform = "";
+          caption.style.visibility = "";
+        }
+      }, 260);
+    }
+  };
+
+  const resetCaption = () => {
+    if (!caption) return;
+
+    clearTimeout(captionHideTimer);
+    cancelAnimationFrame(captionFadeFrame);
+
+    caption.hidden = true;
+    caption.textContent = "";
+    caption.style.opacity = "";
+    caption.style.visibility = "";
+    caption.style.transform = "";
+    caption.setAttribute("aria-hidden", "true");
+  };
+
+  addEventListener("scroll", updateHotspotScroll, { passive: true });
+  addEventListener("resize", updateHotspotScroll);
+  desktopHotspots.addEventListener("change", updateHotspotScroll);
+
   let request = 0;
 
   const load = src => new Promise(resolve => {
@@ -257,10 +395,7 @@ if (details) {
       });
     });
 
-    if (caption) {
-      caption.hidden = true;
-      caption.textContent = "";
-    }
+    resetCaption();
 
     // Already showing this image.
 
@@ -350,10 +485,7 @@ if (details) {
 
       button.setAttribute("aria-expanded", String(open));
 
-      if (caption) {
-        caption.textContent = open ? button.dataset.note : "";
-        caption.hidden = !open;
-      }
+      setCaption(open, open ? button.dataset.note : "");
     });
   });
 
