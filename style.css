@@ -1,5 +1,21 @@
 /*---ROOT🟧---*/
 
+@font-face {
+  font-family: 'PaintFactory';
+  src: url('./fonts/PaintFactory-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PaintFactory';
+  src: url('./fonts/PaintFactory-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
 
 /*Colours🟧*/
@@ -12,7 +28,7 @@
 --line-on-dark: rgba(240,234,219,.25);/**/
 
 --pastel-60: rgb(231,222,198);/**/
---pastel-90: rgb(204,198,165);/**/
+--pastel-90: rgb(192,189,156);/**/
 --pastel-120: rgb(216,195,168);/**/
 
 /*Layout🟧*/
@@ -27,7 +43,7 @@
 
 --small-font: 12px;
 --medium-font: 15px;
---display: "Georgia", serif;
+--display: 'PaintFactory', sans-serif;
 --mono: monospace;
 
 }
@@ -47,8 +63,8 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 body { margin: 0; background: var(--light); color: var(--dark); font: 400 var(--medium-font)/1.7 var(--mono); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-h1, h2, h3 { font-family: var(--display); line-height: 1; }
-h1, h2 { font-weight: 300; }
+h1, h2, h3 { font-family: var(--display); line-height: 1;}
+h1, h2 { font-weight: 400; }
 a { color: inherit; }
 button, input, textarea, select { font: inherit; -webkit-tap-highlight-color: transparent; }
 button, a { -webkit-tap-highlight-color: transparent; }
@@ -296,28 +312,27 @@ to { transform: scaleX(1); }
 #process > .section-description { margin-bottom: 3rem; }
 
 .process-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 0; padding: 0; border-top: 1px solid var(--line); list-style: none; }
-.process-steps li { min-width: 0; padding: 2rem var(--gutter); }
+.process-steps li { min-width: 0; padding: 1.5rem var(--gutter); }
 .process-steps li + li { border-left: 1px solid var(--line); }
-.step-number { display: block; margin-bottom: 1.25rem; color: var(--accent); font-size: .9rem; font-variant-numeric: tabular-nums; }
+.step-number { display: block; margin-bottom: 1.5rem; color: var(--accent); font-size: .9rem; font-variant-numeric: tabular-nums; }
 .process-steps h3 { margin: 0 0 .5rem; font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
-.process-steps p { margin: 0; color: var(--dark); font-size: .8rem; line-height: 1.5; opacity: var(--muted); }
+.process-steps p { margin: 0; color: var(--dark); font-size: .75rem; line-height: 1.5; opacity: var(--muted); }
 .process-steps a { margin-top: .9rem; color: var(--dark); font-size: .75rem; }
 
 @media (max-width: 720px) {
 #process { padding-bottom: 0; }
 .process-steps { grid-template-columns: 1fr; border-top: 0; }
-.process-steps li, .process-steps li + li { padding: 2rem var(--gutter); border: 0; border-top: 1px solid var(--line); }
+.process-steps li, .process-steps li + li { padding: 1.5rem var(--gutter); border: 0; border-top: 1px solid var(--line); }
 .step-number { margin-bottom: .5rem; }
 }
 
-/*---GALLERY🟧---*/
+/*---GALLERY✅---*/
 
-#gallery { position: relative; height: 760px; padding: 0; overflow: hidden; background: var(--dark); }
-.gallery-statement { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--light); pointer-events: none; }
-.gallery-static { font-size: var(--medium-font); letter-spacing: .02em; }
+#gallery { height: 720px; }
+.gallery-statement { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--light); }
 .gallery-word-wrap { height: clamp(6rem, 12vw, 9rem); overflow: hidden; }
-.gallery-words { display: flex; flex-direction: column; animation: galleryWords 9s infinite; }
-.gallery-words span { display: flex; align-items: center; justify-content: center; height: clamp(6rem, 12vw, 9rem); font: italic 500 clamp(6rem, 12vw, 9rem)/1 var(--display); white-space: nowrap; }
+.gallery-words { animation: galleryWords 9s infinite; }
+.gallery-words span { display: flex; justify-content: center; font: italic clamp(6rem, 12vw, 9rem) var(--display); }
 
 @keyframes galleryWords {
 0%, 27% { transform: translateY(0); }
