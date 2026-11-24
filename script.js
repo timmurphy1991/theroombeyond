@@ -1,3 +1,4 @@
+
 /*---HELPERS---*/
 
 const $ = (selector, parent = document) => parent.querySelector(selector);
@@ -52,11 +53,11 @@ if (!reduceMotion && "IntersectionObserver" in window) {
 
 /*---NAVIGATION---*/
 
-const header = $(".intro-header");
+const header = $(".site-header");
 
 if (header) {
-  const menu = $(".intro-menu-button", header);
-  const nav = $(".intro-nav", header);
+  const menu = $(".site-menu-button", header);
+  const nav = $(".site-nav", header);
   const mobile = matchMedia("(max-width: 860px)");
 
   const closeMenu = () => {
@@ -101,13 +102,13 @@ if (header) {
 
 /*---HERO SLIDESHOW---*/
 
-const hero = $("#introduction");
+const hero = $("#hero");
 
 if (hero) {
-  const images = $$(".intro-image", hero);
-  const links = $$(".intro-studio-links a", hero);
-  const progress = $(".intro-progress", hero);
-  const detail = $(".intro-detail", hero);
+  const images = $$(".hero-image", hero);
+  const links = $$(".hero-studio-links a", hero);
+  const progress = $(".hero-progress", hero);
+  const detail = $(".hero-detail", hero);
 
   const duration = 6500;
 
