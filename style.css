@@ -305,6 +305,8 @@ to { transform: scaleX(1); }
 
 /*---STUDIOS🟧---*/
 
+/*---STUDIOS🟧---*/
+
 .studio-grid{
 display:grid;
 grid-template-columns:repeat(3,minmax(0,1fr));
@@ -317,10 +319,10 @@ display:flex;
 flex-direction:column;
 min-width:0;
 overflow:hidden;
+border:1.5px solid var(--dark);
 border-radius:var(--round);
 background:var(--studio-colour);
-color:var(--dark);
-transition:background .3s ease;}
+color:var(--dark);}
 
 .studio .drawing{
 padding:2.5rem 1.25rem 0;}
@@ -342,7 +344,7 @@ vector-effect:non-scaling-stroke;}
 
 .studio .elevation .glazing{
 fill:var(--light);
-fill-opacity:.35;}
+fill-opacity:.33;}
 
 .studio .dimensions{
 display:flex;
@@ -383,20 +385,51 @@ opacity:var(--muted);}
 display:flex;
 align-items:center;
 justify-content:space-between;
+flex-wrap:wrap;
 gap:12px;
 margin-top:auto;
-padding:0 1.25rem 1.25rem;}
+padding:0 1.25rem;}
 
 .studio .button:hover{
 border-color:var(--dark);
 background:var(--dark);
 color:var(--light);}
 
-/*---STUDIO CARD REVEAL---*/
+/*---STUDIO EXPLORE---*/
 
-.studio{
-opacity:1;
-transform:none;}
+.studio-explore{
+position:relative;
+display:flex;
+flex:0 0 calc(100% + 2.5rem);
+align-items:center;
+justify-content:center;
+height:60px;
+margin:1.25rem -1.25rem 0;
+background:var(--dark);
+color:var(--light);
+font-size:var(--medium-font);
+text-decoration:none;}
+
+.studio-explore::after{
+position:absolute;
+bottom:17px;
+left:50%;
+width:4.2em;
+height:1px;
+background:currentColor;
+content:"";
+transform:translateX(-50%) scaleX(0);
+transform-origin:right;
+transition:transform var(--ease);}
+
+.studio-explore:hover::after{
+transform:translateX(-50%) scaleX(1);
+transform-origin:left;}
+
+.studio-explore:focus-visible{
+outline-offset:-4px;}
+
+/*---STUDIO CARD REVEAL---*/
 
 .motion-ready .studio{
 opacity:0;
@@ -428,11 +461,18 @@ padding:2rem 1rem 0;}
 padding-inline:1rem;
 font-size:10px;}
 
-.studio-title,.studio-links{
+.studio-title{
+padding-inline:1rem;}
+
+.studio-links{
 padding-inline:1rem;}
 
 .studio .description{
 margin-inline:1rem;}
+
+.studio-explore{
+flex-basis:calc(100% + 2rem);
+margin-inline:-1rem;}
 
 }
 
